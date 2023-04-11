@@ -14,12 +14,16 @@ urlpatterns = [
         path('auth/registration/account-confirm-email/<str:key>/', ConfirmEmailView.as_view()),
         path('auth/registration/', include('dj_rest_auth.registration.urls')),
         path('auth/registration/verify-email/', VerifyEmailView.as_view(), name='verify_email'),
-        path('auth/registration/resend-email-verification/', ResendEmailVerificationView.as_view(), name='resend_email_verification'),
-        path('auth/registration/account-confirm-email/', VerifyEmailView.as_view(), name='account_email_verification_sent'),
-        re_path(r'^auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(), name='account_confirm_email'),
+        path('auth/registration/resend-email-verification/', ResendEmailVerificationView.as_view(),
+             name='resend_email_verification'),
+        path('auth/registration/account-confirm-email/', VerifyEmailView.as_view(),
+             name='account_email_verification_sent'),
+        re_path(r'^auth/registration/account-confirm-email/(?P<key>[-:\w]+)/$', VerifyEmailView.as_view(),
+                name='account_confirm_email'),
 
-        path('auth/password-reset/', PasswordResetView.as_view()),
-        path('auth/password-reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view()),
+        path('auth/password-reset/', PasswordResetView.as_view()),  # TODO: Fix this
+        path('auth/password-reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(),
+             name='password_reset_confirm'),
 
         # Accounts endpoints
         path('accounts/', include('accounts.urls')),
