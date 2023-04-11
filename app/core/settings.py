@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'dj_rest_auth',
     'dj_rest_auth.registration',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',  # Google OAuth2
     'accounts',
 ]
 
@@ -94,10 +95,8 @@ SERVE_MEDIA = True
 
 CORS_ALLOWED_ORIGINS = os.getenv('DJANGO_CORS_ALLOWED_ORIGINS').split(',')
 
-
 # Custom auth user model
 AUTH_USER_MODEL = 'accounts.User'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -126,8 +125,7 @@ REST_FRAMEWORK = {
     ]
 }
 
-
-SITE_ID = 1
+SITE_ID = 2
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -159,6 +157,23 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_UNIQUE_EMAIL = True
+SOCIALACCOUNT_QUERY_EMAIL = True
+# redirect to the login page in case of authentication failure
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 LOGIN_URL = 'http://localhost:8000/api/v1/auth/login/'
+LOGIN_REDIRECT_URL = 'http://localhost:8000/api/v1/auth/login/'
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    # Create a Google OAuth2 application at https://console.developers.google.com/
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}

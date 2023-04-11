@@ -25,6 +25,9 @@ urlpatterns = [
         path('auth/password-reset-confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(),
              name='password_reset_confirm'),
 
+        # Login endpoints with Google OAuth2
+        path('auth/', include('allauth.urls')),
+
         # Accounts endpoints
         path('accounts/', include('accounts.urls')),
     ])),
