@@ -61,8 +61,8 @@ This template is thought and designed for the docker environment. It is not reco
 POSTGRES_PASSWORD=somerandomstring
 SECRET_KEY=anotherrandomstring
 EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_PASSWORD=gmailpassword
-EMAIL_HOST_USER=yourmail@gmail.com
+EMAIL_HOST_PASSWORD=gmailpassword (Turn ON two factor authentication of gmail account, and create an app password - https://support.google.com/accounts/answer/185833)
+EMAIL_HOST_USER=yourmail@gmail.com (gmail_username)
 EMAIL_PORT=587
 DEBUG=True
 DJANGO_ALLOWED_HOSTS=*
