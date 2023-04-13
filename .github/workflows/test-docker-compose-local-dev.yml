@@ -4,8 +4,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Make envfile
       - uses: SpicyPizza/create-envfile@v1.3
+      - name: Make envfile
         with:
           envkey_DEBUG: True
           envkey_POSTGRES_PASSWORD: somerandompassword
