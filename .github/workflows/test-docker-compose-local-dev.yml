@@ -10,7 +10,7 @@ jobs:
           envkey_DEBUG: True
           envkey_POSTGRES_PASSWORD: somerandompassword
           envkey_SECRET_KEY: anotherrandomstring
-          envkey_ALLOWED_HOSTS: *
+          envkey_ALLOWED_HOSTS: localhost
           envkey_DJANGO_CORS_ALLOWED_ORIGINS: http://localhost:5000
           envkey_DJANGO_CSFR_TRUSTED_ORIGINS: http://localhost:5000
           envkey_EMAIL_HOST: smtp.gmail.com
@@ -21,4 +21,4 @@ jobs:
           envkey_STRIPE_PUBLISHABLE_KEY: pk_test_51IY2
       - uses: actions/checkout@v2
       - name: Build the stack
-        run: docker-compose up --build
+        run: docker-compose -f docker-compose-local-dev.yml up --build
