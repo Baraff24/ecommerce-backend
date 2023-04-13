@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',  # Google OAuth2
     'accounts',
+    'shop',
 ]
 
 MIDDLEWARE = [
@@ -177,3 +178,8 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+
+# STRIPE SETTINGS
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')

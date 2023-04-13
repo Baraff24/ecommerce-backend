@@ -1,4 +1,7 @@
-# Django template
+[![Docker Compose Actions Workflow](https://github.com/Baraff24/ecommerce-backend/actions/workflows/test-docker-compose-local-dev.yml/badge.svg)](https://github.com/Baraff24/ecommerce-backend/actions/workflows/test-docker-compose-local-dev.yml)
+# Django e-commerce template with docker
+
+This is a template for a django e-commerce project with docker, django rest framework, postgresql, stripe and google oauth2.
 
 ## Technologies
 
@@ -36,6 +39,12 @@ This template is thought and designed for the docker environment. It is not reco
 | CORS allow all                     |  ❌ No (default=localhost)  |
 | Allow all hosts                    |  ❌ No (default=localhost)  |
 
+There is google oauth2 authentication already implemented with django-allauth.
+You have to create a google oauth2 app and add the credentials to the admin page.
+
+There is also a stripe payment system already implemented.
+You have to create a stripe account and add the credentials to the .env file.
+
 ### Required environment variables
 
 - ✅ Required
@@ -68,4 +77,6 @@ DEBUG=True
 DJANGO_ALLOWED_HOSTS=*
 DJANGO_CORS_ALLOWED_ORIGINS=http://localhost:5000
 DJANGO_CSRF_TRUSTED_ORIGINS=http://localhost:5000
+STRIPE_SECRET_KEY=sk_test_51H
+STRIPE_PUBLISHABLE_KEY=pk_test_51H
 ```
